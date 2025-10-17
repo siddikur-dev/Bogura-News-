@@ -41,7 +41,7 @@ const Home = () => {
           <AllCategories></AllCategories>
         </aside>
         <div className="col-span-6">
-          <h2 className="text-lg font-bold">Main</h2>
+          <h2 className="text-lg font-bold">Dragon News Home</h2>
           <Outlet></Outlet>
         </div>
         <aside className="col-span-3">
