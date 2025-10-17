@@ -35,7 +35,7 @@ const Home = () => {
           <Navbar></Navbar>
         </nav>
       </header>
-      <main className="w-11/12 grid grid-cols-12 mx-auto my-4  ">
+      <main className="w-11/12 grid grid-cols-12 mx-auto my-4 gap-5  ">
         {/* Nav Left*/}
         <aside className="col-span-3">
           <AllCategories></AllCategories>
@@ -44,7 +44,7 @@ const Home = () => {
           <h2 className="text-lg font-bold">Main</h2>
           <Outlet></Outlet>
         </div>
-        <aside className="nav-right">
+        <aside className="col-span-3">
           <RightAside></RightAside>
         </aside>
       </main>
