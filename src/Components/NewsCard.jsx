@@ -30,9 +30,8 @@ const NewsCard = ({ news }) => {
           <p className="text-sm text-gray-500">{formattedDate}</p>
         </div>
         <div className="ml-auto flex gap-3 text-gray-500 text-lg cursor-pointer">
-            <CiBookmark />
-            <IoShareSocialOutline />
-
+          <CiBookmark />
+          <IoShareSocialOutline />
         </div>
       </div>
 

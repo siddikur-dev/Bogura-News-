@@ -1,13 +1,19 @@
 import { format } from "date-fns";
-import React from "react";
+import React, { useEffect } from "react";
 import Marquee from "react-fast-marquee";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useNavigate } from "react-router";
 import Navbar from "../../Components/Navbar";
 import AllCategories from "../../Components/AllCategories";
 import RightAside from "../../Components/RightAside";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // যখন root path এ আসবে, তখন category/1 এ redirect করবে
+    navigate("/category/1", { replace: true });
+  }, [navigate]);
   return (
     <section className="container mx-auto">
       <header className="poppins text-center">
@@ -41,7 +47,6 @@ const Home = () => {
           <AllCategories></AllCategories>
         </aside>
         <div className="col-span-6">
-          <h2 className="text-lg font-bold">Dragon News Home</h2>
           <Outlet></Outlet>
         </div>
         <aside className="col-span-3">
