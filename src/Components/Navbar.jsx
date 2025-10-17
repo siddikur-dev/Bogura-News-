@@ -11,7 +11,7 @@ const Navbar = () => {
       </div>
       <div className="flex items-center gap-3">
         <img src={user} alt="" />
-        <button className="btn btn-primary">Login</button>
+        <button className="btn btn-secondary">Login</button>
       </div>
     </div>
   );

@@ -4,6 +4,8 @@ import Marquee from "react-fast-marquee";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link, Outlet } from "react-router";
 import Navbar from "../../Components/Navbar";
+import AllCategories from "../../Components/AllCategories";
+import RightAside from "../../Components/RightAside";
 
 const Home = () => {
   return (
@@ -33,13 +35,18 @@ const Home = () => {
           <Navbar></Navbar>
         </nav>
       </header>
-      <main>
+      <main className="w-11/12 grid grid-cols-12 mx-auto my-4  ">
         {/* Nav Left*/}
-        <div className="nav-left"></div>
-        <div className="main">
+        <aside className="col-span-3">
+          <AllCategories></AllCategories>
+        </aside>
+        <div className="col-span-6">
+          <h2 className="text-lg font-bold">Main</h2>
           <Outlet></Outlet>
         </div>
-        <div className="nav-right"></div>
+        <aside className="nav-right">
+          <RightAside></RightAside>
+        </aside>
       </main>
     </section>
   );
