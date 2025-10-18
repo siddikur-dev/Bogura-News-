@@ -11,9 +11,8 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // যখন root path এ আসবে, তখন category/1 এ redirect করবে
     navigate("/category/1", { replace: true });
-  }, [navigate]);
+  }, []);
   return (
     <section className="container mx-auto">
       <header className="poppins text-center">

@@ -5,6 +5,7 @@ import ErrorPage from "../../Page/Error/ErrorPage";
 import CategoryNews from "../../Components/CategoryNews";
 import Register from "../../Page/Auth/Register";
 import Login from "../../Page/Auth/Login";
+import Profile from "../../Page/Home/Profile";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
         path: "category/:id",
         loader: () => fetch("/news.json"),
         Component: CategoryNews,
+      },
+      {
+        path: "/profile",
+        Component: Profile,
       },
     ],
   },

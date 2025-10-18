@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="text-gray-500 flex gap-4">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">About </NavLink>
-        <NavLink to="career">Career</NavLink>
+        <NavLink to="/profile">Profile</NavLink>
       </div>
       <div className="flex items-center gap-3">
         <ThemeToggle></ThemeToggle>
