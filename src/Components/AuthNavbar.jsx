@@ -4,7 +4,7 @@ import ThemeToggle from "../Ui/ThemeToggle/ThemeToggle";
 
 const AuthNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  
   return (
     <nav className="bg-base-100 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

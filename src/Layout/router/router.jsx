@@ -3,7 +3,6 @@ import { createBrowserRouter } from "react-router";
 import Home from "../../Page/Home/Home";
 import ErrorPage from "../../Page/Error/ErrorPage";
 import CategoryNews from "../../Components/CategoryNews";
-import AuthLayout from "../../AuthLayout/AuthLayout";
 import Register from "../../Page/Auth/Register";
 import Login from "../../Page/Auth/Login";
 
