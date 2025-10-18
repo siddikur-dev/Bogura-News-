@@ -17,9 +17,9 @@ const NewsCard = ({ news }) => {
   );
 
   return (
-    <div className="card w-full bg-base-100 shadow-md rounded-xl border border-gray-100">
+    <div className="card w-full bg-base-100 shadow-md rounded-xl border border-gray-100 ">
       {/* Author Info */}
-      <div className="flex items-center gap-3 px-4 pt-4">
+      <div className="flex items-center gap-3 px-4 pt-4 bg-base-300">
         <div className="avatar">
           <div className="w-10 h-10 rounded-full">
             <img src={author.img} alt="Author" />

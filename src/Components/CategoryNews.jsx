@@ -26,12 +26,17 @@ const CategoryNews = () => {
   }, [newsData, idNumber]);
   return (
     <div>
-      <h2 className="text-primary text-xl font-bold">
+      <h2 className="text-primary text-xl font-bold my-2">
         Total {categoryNews.length} Found
       </h2>
-      {categoryNews.map((news) => (
-        <NewsCard key={news.id} news={news}></NewsCard>
-      ))}
+      <div
+        className="space-y-5
+      "
+      >
+        {categoryNews.map((news) => (
+          <NewsCard key={news.id} news={news}></NewsCard>
+        ))}
+      </div>
     </div>
   );
 };

@@ -18,7 +18,7 @@ const AllCategories = () => {
               className={({ isActive }) =>
                 `btn transition-colors ${
                   isActive
-                    ? "btn-secondary text-white" // active color
+                    ? "btn-secondary" // active color
                     : "btn-secondary/30 text-gray-700" // normal
                 }`
               }
