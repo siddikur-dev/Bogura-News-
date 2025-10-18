@@ -45,7 +45,7 @@ const NewsCard = ({ news }) => {
       {/* Image */}
       <figure className="px-4 pt-3">
         <img
-          src={thumbnail_url}
+          src={thumbnail_url || "Image "}
           alt="News Thumbnail"
           className="rounded-xl w-full object-cover"
         />

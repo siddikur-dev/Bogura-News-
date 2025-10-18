@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router";
-import user from '../../src/assets/user.png'
+import ThemeToggle from "../Ui/ThemeToggle/ThemeToggle";
 const Navbar = () => {
   return (
     <div className="flex items-center justify-between mx-auto ">
@@ -11,8 +11,10 @@ const Navbar = () => {
         <NavLink to="career">Career</NavLink>
       </div>
       <div className="flex items-center gap-3">
-        <img src={user} alt="" />
-        <button className="btn btn-secondary">Login</button>
+        <ThemeToggle></ThemeToggle>
+        <NavLink to="/auth/login" className="btn btn-secondary">
+          Login
+        </NavLink>
       </div>
     </div>
   );
