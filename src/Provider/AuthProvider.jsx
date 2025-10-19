@@ -3,6 +3,7 @@ import { AuthContext } from "./AuthContext";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.config";
@@ -10,9 +11,15 @@ const AuthProvider = ({ children }) => {
   // State declare useState to user data management
   const [user, setUser] = useState(null);
 
+  console.log(user);
   // Create User
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  // Sign In User
+  const SignInUser = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   // onAuthStateChanged
@@ -34,6 +41,7 @@ const AuthProvider = ({ children }) => {
   const userData = {
     user,
     createUser,
+    SignInUser,
     logOut,
   };
   return (

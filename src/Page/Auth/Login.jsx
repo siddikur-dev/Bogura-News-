@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { Link } from "react-router";
 import Navbar from "../../Components/Navbar";
 import AuthNavbar from "../../Components/AuthNavbar";
+import { AuthContext } from "../../Provider/AuthContext";
 
 const Login = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  const { SignInUser } = use(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -18,11 +21,16 @@ const Login = () => {
     setSuccess("");
 
     // Here you can add your login logic
-    console.log({ email, password });
-
-    // Clear form after successful login
-    form.reset();
-    setSuccess("Login successful!");
+    SignInUser(email, password)
+      .then(() => {
+        alert("Sign In Success");
+        // Clear form after successful login
+        form.reset();
+      })
+      .catch((error) => {
+        alert("please provide correct info")
+        console.log(error);
+      });
   };
 
   return (
@@ -120,7 +128,7 @@ const Login = () => {
               Don't have an account?{" "}
               <Link
                 to="/auth/register"
-                className="text-blue-500 hover:underline"
+                className="text-primary hover:underline"
               >
                 Register here
               </Link>
