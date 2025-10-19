@@ -13,7 +13,7 @@ const AuthNavbar = () => {
   const signOut = () => {
     logOut()
       .then(() => {
-        console.log("sign out success");
+        // console.log("sign out success");
       })
       .catch((error) => {
         console.log("error", error);
