@@ -1,5 +1,5 @@
 import React, { use, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import Navbar from "../../Components/Navbar";
 import AuthNavbar from "../../Components/AuthNavbar";
 import { AuthContext } from "../../Provider/AuthContext";
@@ -7,7 +7,9 @@ import { AuthContext } from "../../Provider/AuthContext";
 const Login = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
   const { SignInUser } = use(AuthContext);
 
   const handleLogin = (e) => {
@@ -24,7 +26,8 @@ const Login = () => {
     SignInUser(email, password)
       .then(() => {
         alert("Sign In Success");
-        // Clear form after successful login
+        navigate(location.state || "/");
+f        // Clear form after successful login
         form.reset();
       })
       .catch((error) => {

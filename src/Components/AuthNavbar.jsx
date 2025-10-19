@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, use } from "react";
 import { Link, NavLink } from "react-router";
 import ThemeToggle from "../Ui/ThemeToggle/ThemeToggle";
 import { AuthContext } from "../Provider/AuthContext";
@@ -7,8 +7,18 @@ const AuthNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user } = useContext(AuthContext);
 
+  const { logOut } = use(AuthContext);
   const activeClass = "text-secondary bg-primary";
   const normalClass = "text-secondary/80 hover:text-secondary";
+  const signOut = () => {
+    logOut()
+      .then(() => {
+        console.log("sign out success");
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
 
   return (
     <nav className="bg-base-100 shadow-md">
@@ -20,7 +30,7 @@ const AuthNavbar = () => {
           <div className="hidden md:flex md:items-center md:justify-center md:space-x-8 w-1/3">
             <NavLink
               to="/"
-               className={({ isActive }) =>
+              className={({ isActive }) =>
                 isActive ? activeClass : normalClass
               }
             >
@@ -37,18 +47,18 @@ const AuthNavbar = () => {
             {user ? (
               <NavLink
                 to="/profile"
-                 className={({ isActive }) =>
-                isActive ? activeClass : normalClass
-              }
+                className={({ isActive }) =>
+                  isActive ? activeClass : normalClass
+                }
               >
                 Profile
               </NavLink>
             ) : (
               <Link
                 to="/auth/login"
-                 className={({ isActive }) =>
-                isActive ? activeClass : normalClass
-              }
+                className={({ isActive }) =>
+                  isActive ? activeClass : normalClass
+                }
               >
                 Login
               </Link>
@@ -57,12 +67,21 @@ const AuthNavbar = () => {
 
           {/* Right side */}
           <div className="hidden md:flex md:items-center md:justify-end w-1/3">
-            <Link
-              to="/auth/register"
-              className="px-4 py-2 rounded-md text-sm font-medium text-bg-base-100 bg-secondary/50 transition duration-150 ease-in-out"
-            >
-              Register
-            </Link>
+            {user ? (
+              <Link
+                onClick={signOut}
+                className="px-4 py-2 rounded-md text-sm font-medium text-bg-base-100 bg-secondary/50 transition duration-150 ease-in-out"
+              >
+                SignOut
+              </Link>
+            ) : (
+              <Link
+                to="/auth/register"
+                className="px-4 py-2 rounded-md text-sm font-medium text-bg-base-100 bg-secondary/50 transition duration-150 ease-in-out"
+              >
+                Register
+              </Link>
+            )}
           </div>
 
           {/* Mobile menu button */}
