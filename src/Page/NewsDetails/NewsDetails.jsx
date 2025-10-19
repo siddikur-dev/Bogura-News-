@@ -24,7 +24,7 @@ const NewsDetails = () => {
       </header>
       <div className="container mx-auto grid grid-cols-12 gap-4">
         <main className="col-span-8 bg-bg-base-100 p-4 rounded">
-            <NewsCard news={news}></NewsCard>
+          <NewsCard news={news}></NewsCard>
         </main>
         <aside className="col-span-4 bg-bg-base-200 p-4 rounded">
           <RightAside></RightAside>

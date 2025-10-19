@@ -10,7 +10,7 @@ import { auth } from "../Firebase/Firebase.config";
 const AuthProvider = ({ children }) => {
   // State declare useState to user data management
   const [user, setUser] = useState(null);
-
+  const [loading, setLoading] = useState(true);
   // Create User
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -25,6 +25,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
+      setLoading(false);
     });
     return () => {
       unSubscribe();
@@ -42,10 +43,9 @@ const AuthProvider = ({ children }) => {
     createUser,
     SignInUser,
     logOut,
+    loading,
   };
-  return (
-    <AuthContext.Provider value={userData}>{children}</AuthContext.Provider>
-  );
+  return <AuthContext value={userData}>{children}</AuthContext>;
 };
 
 export default AuthProvider;

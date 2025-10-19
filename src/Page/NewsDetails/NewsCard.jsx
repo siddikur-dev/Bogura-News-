@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
-  const { title, image_url, details, published_date, tags, rating } = news;
+  const { title, image_url, details } = news;
 
   return (
     <div>
@@ -17,7 +17,10 @@ const NewsCard = ({ news }) => {
 
           {/* Details */}
           <p className="text-color-secondary mb-4">{details}</p>
-          <Link to={'/category/1'} className="mt-6 px-4 py-2 bg-primary  rounded transition">
+          <Link
+            to={"/category/1"}
+            className="mt-6 px-4 py-2 bg-primary  rounded transition"
+          >
             ← All news in this category
           </Link>
         </div>
