@@ -1,12 +1,39 @@
-import React from "react";
+import React, { use } from "react";
+import { AuthContext } from "../Provider/AuthContext";
 
 const SocialLogin = () => {
+  const { signUpGoogle, signWithGithub, setUser } = use(AuthContext);
+
+  // google sign in
+  const signUpWithGoogle = () => {
+    signUpGoogle()
+      .then((result) => {
+        setUser(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  //  github sign in
+  const githubSignIn = () => {
+    signWithGithub()
+      .then((result) => {
+        setUser(result.user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   return (
     <div>
       <h2 className="font-bold text-lg text-gray-600">Login With</h2>
       <div className="my-4 space-y-3">
         {/* Google */}
-        <button className="btn hover:btn-secondary text-lg border-[#e5e5e5] w-full">
+        <button
+          onClick={signUpWithGoogle}
+          className="btn hover:btn-secondary text-lg border-[#e5e5e5] w-full"
+        >
           <svg
             aria-label="Google logo"
             width="26"
@@ -37,7 +64,10 @@ const SocialLogin = () => {
           Login with Google
         </button>
         {/* GitHub */}
-        <button className="btn btn-secondary hover:btn-primary text-lg border-[#e5e5e5] w-full">
+        <button
+          onClick={githubSignIn}
+          className="btn btn-secondary hover:btn-primary text-lg border-[#e5e5e5] w-full"
+        >
           <svg
             aria-label="GitHub logo"
             width="16"
