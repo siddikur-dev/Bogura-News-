@@ -27,7 +27,7 @@ const Login = () => {
       .then(() => {
         alert("Sign In Success");
         navigate(location.state || "/");
-f        // Clear form after successful login
+        // Clear form after successful login
         form.reset();
       })
       .catch((error) => {

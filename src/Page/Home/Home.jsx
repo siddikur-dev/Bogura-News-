@@ -2,13 +2,15 @@ import { format } from "date-fns";
 import React, { useEffect } from "react";
 import Marquee from "react-fast-marquee";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { Link, Outlet, useNavigate } from "react-router";
+import { Link, Outlet, useNavigate, useNavigation } from "react-router";
 import Navbar from "../../Components/Navbar";
 import AllCategories from "../../Components/AllCategories";
 import RightAside from "../../Components/RightAside";
+import Loading from "../../Components/Loading";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { state } = useNavigation();
 
   useEffect(() => {
     navigate("/category/1", { replace: true });
@@ -46,7 +48,7 @@ const Home = () => {
           <AllCategories></AllCategories>
         </aside>
         <div className="col-span-6">
-          <Outlet></Outlet>
+          {state === "loading" ? <Loading></Loading> : <Outlet></Outlet>}
         </div>
         <aside className="col-span-3 top-0 sticky h-fit ">
           <RightAside></RightAside>
