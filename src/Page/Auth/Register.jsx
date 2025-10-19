@@ -11,7 +11,6 @@ const Register = () => {
 
   //import authProvider userData
   const { createUser } = use(AuthContext);
-
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
