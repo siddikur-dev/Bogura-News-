@@ -7,12 +7,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB4DxOYb_hLHgGQ55S6p-i7uC3wBsuNoL8",
-  authDomain: "bogura-news-f2d09.firebaseapp.com",
-  projectId: "bogura-news-f2d09",
-  storageBucket: "bogura-news-f2d09.firebasestorage.app",
-  messagingSenderId: "959769926675",
-  appId: "1:959769926675:web:887f178cefc7d1a7a8f3e6",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
