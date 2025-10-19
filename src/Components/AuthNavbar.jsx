@@ -39,7 +39,7 @@ const AuthNavbar = () => {
               About
             </NavLink>
             <NavLink
-              to="/career"
+              to="/profile"
               className={({ isActive }) =>
                 `px-3 py-2 rounded-md text-sm font-medium ${
                   isActive
@@ -48,7 +48,7 @@ const AuthNavbar = () => {
                 }`
               }
             >
-              Career
+              Profile
             </NavLink>
           </div>
 
