@@ -2,6 +2,7 @@ import React, { use, useState } from "react";
 import { Link } from "react-router";
 import AuthNavbar from "../../Components/AuthNavbar";
 import { AuthContext } from "../../Provider/AuthContext";
+import { sendEmailVerification, updateProfile } from "firebase/auth";
 
 const Register = () => {
   // if user create successfully then showing this message
@@ -9,7 +10,7 @@ const Register = () => {
   const [success, setSuccess] = useState("");
 
   //import authProvider userData
-  const { createUser, setUser } = use(AuthContext);
+  const { createUser } = use(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -18,7 +19,6 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name,email,password);
 
     // Reset error and success messages
     setError("");
@@ -40,18 +40,29 @@ const Register = () => {
 
     // Here you can add your registration logic
 
-    createUser(name, photo, email, password)
+    createUser(email, password)
       .then((result) => {
-        setUser(result.user);
-        console.log(result.user);
+        // name and photo adjust to make object
+        const userProfile = {
+          displayName: name,
+          photoURL: photo,
+        };
+        updateProfile(result.user, userProfile)
+          .then(() => {
+            setSuccess("Successfully User Created.");
+          })
+          .catch((error) => {
+            setError(error.message);
+          });
 
-        setSuccess("Registration successful!");
+        // send email verification
+        sendEmailVerification(result.user).then(() => {
+          alert("email verification send");
+        });
       })
       .catch((error) => {
-        console.log(error);
-        setError(error);
+        setError(error.message);
       });
-    // Clear form
     form.reset();
   };
 
@@ -123,7 +134,9 @@ const Register = () => {
               Register
             </button>
 
-            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+            {error && (
+              <p className="text-red-500 text-sm mt-2 text-center">{error}</p>
+            )}
             {success && (
               <p className="text-green-500 text-sm mt-2 text-center">
                 {success}
