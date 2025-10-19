@@ -54,14 +54,14 @@ const AuthNavbar = () => {
                 Profile
               </NavLink>
             ) : (
-              <Link
+              <NavLink
                 to="/auth/login"
                 className={({ isActive }) =>
                   isActive ? activeClass : normalClass
                 }
               >
                 Login
-              </Link>
+              </NavLink>
             )}
           </div>
 

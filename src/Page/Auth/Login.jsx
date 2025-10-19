@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import Navbar from "../../Components/Navbar";
 import AuthNavbar from "../../Components/AuthNavbar";
@@ -9,8 +9,25 @@ const Login = () => {
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
-  const { SignInUser } = use(AuthContext);
+  const emailRef = useRef();
+  // Destructure from AuthProvider
+
+  const { SignInUser, forgetPassword } = use(AuthContext);
+
+  const handleForgetPassword = () => {
+    const email = emailRef.current.value;
+    if (!email) {
+      alert("please input filed form email");
+      return;
+    }
+    forgetPassword(email)
+      .then(() => {
+        alert("Reset email send");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -51,6 +68,7 @@ const Login = () => {
                 Email
               </label>
               <input
+                ref={emailRef}
                 type="email"
                 name="email"
                 required
@@ -83,15 +101,19 @@ const Login = () => {
                 </label>
               </div>
               <div className="text-sm">
-                <a href="#" className="text-blue-500 hover:underline">
+                <button
+                  type="button"
+                  onClick={handleForgetPassword}
+                  className="text-primary hover:underline"
+                >
                   Forgot password?
-                </a>
+                </button>
               </div>
             </div>
 
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
+              className="w-full bg-secondary text-white py-2 px-4 rounded-md cursor-pointer transition duration-300"
             >
               Sign In
             </button>

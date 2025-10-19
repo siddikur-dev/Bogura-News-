@@ -5,6 +5,7 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -51,6 +52,11 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  // Forget Password
+  const forgetPassword = (email) => {
+   return sendPasswordResetEmail(auth, email);
+  };
+
   // AuthContext Value
   const userData = {
     user,
@@ -60,6 +66,7 @@ const AuthProvider = ({ children }) => {
     signWithGithub,
     SignInUser,
     logOut,
+    forgetPassword,
     loading,
   };
   return <AuthContext value={userData}>{children}</AuthContext>;
