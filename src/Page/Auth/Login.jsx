@@ -28,7 +28,7 @@ const Login = () => {
         form.reset();
       })
       .catch((error) => {
-        alert("please provide correct info")
+        alert("please provide correct info");
         console.log(error);
       });
   };

@@ -11,7 +11,6 @@ const AuthProvider = ({ children }) => {
   // State declare useState to user data management
   const [user, setUser] = useState(null);
 
-  console.log(user);
   // Create User
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);

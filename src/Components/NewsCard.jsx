@@ -2,10 +2,19 @@ import React from "react";
 import { CiBookmark } from "react-icons/ci";
 import { FaEye, FaStar } from "react-icons/fa";
 import { IoShareSocialOutline } from "react-icons/io5";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
-  const { title, author, thumbnail_url, details, total_view, rating, tags } =
-    news;
+  const {
+    id,
+    title,
+    author,
+    thumbnail_url,
+    details,
+    total_view,
+    rating,
+    tags,
+  } = news;
 
   const formattedDate = new Date(author.published_date).toLocaleDateString(
     "en-US",
@@ -66,9 +75,12 @@ const NewsCard = ({ news }) => {
         </p>
         <p className="mt-2">
           {details.slice(0, 150)}...
-          <span className="text-orange-600 font-semibold cursor-pointer">
+          <Link
+            to={`/newsDetails/${id}`}
+            className="text-orange-600 font-semibold cursor-pointer"
+          >
             Read More
-          </span>
+          </Link>
         </p>
       </div>
 
